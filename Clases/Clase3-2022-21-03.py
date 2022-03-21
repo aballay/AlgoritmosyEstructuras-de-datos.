@@ -18,4 +18,15 @@ def factorial(num):
 
 print(factorial(10))
 
-##
+## Sucecion de fibonacci 
+## 0 1 1 2 3 5 8 13 21 ... etc
+## fb5 = fb(5-2) + fb(5-1)
+
+def fibonacci(num):
+    if(num == 0 or num == 1):
+        return num
+    else:
+        return fibonacci(num-1)  + fibonacci(num-2) 
+
+print(fibonacci(10))
+
