@@ -11,6 +11,7 @@
 
 from contextlib import nullcontext
 from itertools import product
+from statistics import median_low
 
 
 def factorial(num):
@@ -157,3 +158,73 @@ def busquedaSecuencial(vector,buscado):
 vector = [1,2,3,4,5]
 
 print(busquedaSecuencial(vector,7))
+
+
+## Ejercicio X
+## Busqueda binaria
+## Desarrollar el algoritmo de busqueda binaria de manera recursiva
+## El vector debe ser ordenado antes de la busqueda.
+
+vector = [1,2,3,4,5]
+
+def BusquedaBinaria(vector,buscado,primero,ultimo):
+    med = (primero + ultimo) // 2
+    if(primero > buscado):
+        return -1
+    if (buscado == vector[med]):
+        return med
+    elif(vector[med] < buscado):
+        return BusquedaBinaria(vector,buscado,med+1,ultimo)
+    else:
+        return BusquedaBinaria(vector,buscado,primero,med-1)
+
+
+print("Busqueda binaria :",BusquedaBinaria(vector,4,0,len(vector)-1))
+
+
+
+
+### MATRICEZ #########
+##################
+
+matriz = [[1,2,3],[4,5,6],[7,8,9]]
+
+print(matriz)
+
+for i in range(3):
+    for j in range(3):
+        print(matriz[i][j])
+
+
+
+
+#Eficiencia de algoritmos.
+ ## Formas de comparar : 
+
+ ## mejor caso - caso medio - peor caso
+## Mejor Caso: Encuentra en la primera iteracion.
+## Caso Medio : Encuentra en la iteracion del medio.
+## Peor Caso  : Encuentra en la ultima iteracion o directamente no lo encuentra.
+
+ ## El peor de los casos devuelve el tiempo maximo del algoritmo para ser resuellto.
+
+## O(f(n)) : Notacion de tiempos.
+## Algoritmo q requiere tres pasos para ser ejecutado.
+## y dichos pasos requieren el siguiente tiempo
+## O(n),O(n3) , O(n log n) == O(n+n3+n log n)
+
+## Aunque el tiempo requerido por el algortimos es
+#  logicamente la suma de los tiempos requeridos para cada uno 
+# de sus pasos el tiempos del algoritmo es el mayor de los tiempos requeridos para ejecutar 
+# cada uno de lso pasos de dihco algoritmo
+
+## O(n + n3 + n log n) = O(máximo(n, n3, n log n)) = O(n3)
+
+## Valores
+## Operacion elemental : O(1)
+## Secuencia           : O(5)
+## If-Else (condicional): O(g + máximo(rama verdadera, rama falsa))
+## Ciclo For           : O(n) 
+## Ciclo For x2        : O(n2)
+## Ciclo While         : 
+

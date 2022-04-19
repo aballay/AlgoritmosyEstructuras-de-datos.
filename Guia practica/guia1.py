@@ -134,3 +134,29 @@ def busquedaSecuencial(vector,buscado):
 vector = [1,2,3,4,5]
 
 print("busqedaSecuencial",busquedaSecuencial(vector,7))
+
+
+
+## Ejercicio X
+## Busqueda binaria
+## Desarrollar el algoritmo de busqueda binaria de manera recursiva
+## El vector debe ser ordenado antes de la busqueda.
+
+vector = [1,2,3,4,5]
+
+def BusquedaBinaria(vector,buscado,primero,ultimo):
+    med = (primero + ultimo) // 2
+    if(primero > buscado):
+        return -1
+    if (buscado == vector[med]):
+        return med
+    elif(vector[med] < buscado):
+        return BusquedaBinaria(vector,buscado,med+1,ultimo)
+    else:
+        return BusquedaBinaria(vector,buscado,primero,med-1)
+
+
+print("Busqueda binaria :",BusquedaBinaria(vector,4,0,len(vector)-1))
+
+
+
