@@ -1,4 +1,3 @@
-from urllib.request import CacheFTPHandler
 from pila import Pila
 
 
@@ -51,22 +50,16 @@ while not pila.pila_vacia():
     if(movie.date == "2016") and (movie.studio == "Marvel Studios"):
         movieMarvel2016.append(movie)
 
-print("****************************")
 print("Peliculas de 2014: ")
-print("****************************")
 for movie in movie2014:
-    print(movie)
+    print("-",movie)
 
-print("****************************")
-print("total de peliculas en 2018: ")
-print("****************************")
-print(contador2018)
+print("Cantidad de peliculas en 2018: ")
+print("-",contador2018)
 
-print("****************************")
-print("Pelicula de marvel studio estrenadas en 2016:")
-print("****************************")
+print("Peliculas de Marvel Studio estrenadas en 2016:")
 for movie in movieMarvel2016:
-    print(movie.title,movie.studio,movie.date)
+    print("-",movie.title,movie.studio,movie.date)
 
 
 
@@ -83,13 +76,56 @@ c. determinar en cuantas películas participo la Viuda Negra (Black Widow);
 
 d. mostrar todos los personajes cuyos nombre empiezan con C, D y G
 '''
+print("*************")
+print("*************")
+print("Ejercicio 24 ")
+print("*************")
+print("*************")
 
 class Character():
     def __init__(self,name,countMovies):
-        self.name = name,
+        self.name = name
         self.countMovies = countMovies
 
 characters = [
-    Character("xxxxx",4)
-
+    Character("Spider-Man",4),
+    Character("Iron Man",8),
+    Character("Capitan America",7),
+    Character("Black Widow",7),
+    Character("Rocket Raccoon",5),
+    Character("Groot",3),
+    Character("DeadPool",1),
 ]
+
+chars = ["C","D","G"]
+
+pilaCharacters = Pila()
+
+for character in characters:
+    pilaCharacters.apilar(character)
+
+pos = 1
+counter = 0
+characterFive = []
+characterChars = []
+
+while not pilaCharacters.pila_vacia():
+    character = pilaCharacters.desapilar()
+    if(character.name == "Groot" ) or (character.name == "Rocket Raccoon"):
+        print("La posicion de ",character.name,"es :",pos)
+    if(character.countMovies > 5):
+        characterFive.append(character)
+    if(character.name == "Black Widow"):
+        print("Black Widow participo en ",character.countMovies,"peliculas")
+    if(character.name[0] in chars):
+        characterChars.append(character)
+    pos += 1
+
+    
+print("Los personajes que participaron en mas de 5 sagas son los siguientes:")
+for character in characterFive:
+    print(character.name,"trabajo en ",character.countMovies)
+
+print("Los personaes que empiezan con letra D, G o C son :")
+for character in characterChars:
+    print(character.name)
